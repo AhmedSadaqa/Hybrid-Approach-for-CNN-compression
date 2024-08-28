@@ -17,4 +17,9 @@
 `sh layer_pruning.sh`
 
 
-#### Make sure to pass the pruned model to the next pruning technique. In case you are doing filter pruning first, then pass the pruned model to the layer pruning script and vice versa
+#### Make sure to pass the pruned model to the following pruning technique. If you are doing filter pruning first, then pass the pruned model to the layer pruning script and vice versa.
+
+
+
+#### Some code is taken from:
+https://github.com/NVlabs/Taylor_pruning
