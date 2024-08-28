@@ -12,7 +12,7 @@ dataset=CIFAR100
 resnet56(){
 model=resnet
 depth=56
-loadmodel=$dataset'-baseline/'$model'50/model_best.pth.tar'
+loadmodel='/CIFAR100/resnet50/one_shot_criterion30/filterpruning/models/best_model.weights'
 pruningconfig='./configs/cifar_resnet50.json'
 }
 
@@ -22,10 +22,10 @@ export CUDA_VISIBLE_DEVICES=0
 
 echo 'Filter pruning ...'
 
-for method in 0 2 6 22 30
+for method in 30    # [0,2, 6, 22, 30] Make sure to iterate over all of them manually
 do
-    root=$dataset'/'$model'50/one_shot_criterion'$method
-    dir=$root'/filterpruning'
+    root='LayerThenFilter'
+    dir=$root'/one_shot_criterion'$method'-finetune2' # make sure to change from finetune1 to finetune2
 
     echo "Checkpoint directory: " $dir
     python main.py --name=$dir --dataset=$dataset \
